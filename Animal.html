@@ -6,6 +6,7 @@
 <body>
     <h1>What's your favorite animal?</h1>
     <p>Please enter your name:</p>
+    <!-- User Input asking for name -->
     <input type="text" id="nameInput">
     <p>Select a number between 1 and 4:</p>
     <select id="numberSelector" onchange="changeImage()">
@@ -15,9 +16,10 @@
         <option value="3">Eagle</option>
         <option value="4">Bear</option>
     </select>
-
+    <!-- Used drop down since I have not used it in some time -->
     <div id="animalImage"></div>
-
+    <!-- The assignment asked to add or substract using variables, since I already know how to do so learned how to use 
+        const to improve on current skill set instead of practicing something I have done quite a bit  -->
     <script>
         function changeImage() {
             const nameInput = document.getElementById("nameInput");
