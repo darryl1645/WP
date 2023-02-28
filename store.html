@@ -1,0 +1,124 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>The VEXX | Store</title>
+    <meta name="description" content="This is the description">
+    <link rel="stylesheet" href="styles.css" />
+    <script src="store.js" async></script>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <script src="https://www.w3schools.com/lib/w3.js"></script>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+    <!-- Navigation (Stays on Top) -->
+    <div class="w3-top w3-bar w3-black">
+        <a href="#cart.html" class="w3-bar-item w3-button">Home</a>
+        <a href="#about" class="w3-bar-item w3-button">About</a>
+        <a href="store.html" class="w3-bar-item w3-button">Store</a>
+        <a href="#contact" class="w3-bar-item w3-button">Contact</a>
+    </div>
+    
+    <section class="container content-section">
+        <h2 class="section-header"></h2>
+        <div class="shop-items">
+            <div class="shop-item">
+                <span class="shop-item-title">Album 1</span>
+                <img class="shop-item-image" src="images/a.jpg">
+                <div class="shop-item-details">
+                    <span class="shop-item-price">$12.99</span>
+                    <button class="btn btn-primary shop-item-button" type="button">ADD TO CART</button>
+                </div>
+            </div>
+            <div class="shop-item">
+                <span class="shop-item-title">Album 2</span>
+                <img class="shop-item-image" src="images/a2.jpg">
+                <div class="shop-item-details">
+                    <span class="shop-item-price">$14.99</span>
+                    <button class="btn btn-primary shop-item-button" type="button">ADD TO CART</button>
+                </div>
+            </div>
+            <div class="shop-item">
+                <span class="shop-item-title">Album 3</span>
+                <img class="shop-item-image" src="images/a3.jpg">
+                <div class="shop-item-details">
+                    <span class="shop-item-price">$9.99</span>
+                    <button class="btn btn-primary shop-item-button" type="button">ADD TO CART</button>
+                </div>
+            </div>
+            <div class="shop-item">
+                <span class="shop-item-title">Album 4</span>
+                <img class="shop-item-image" src="images/a1.jpg">
+                <div class="shop-item-details">
+                    <span class="shop-item-price">$19.99</span>
+                    <button class="btn btn-primary shop-item-button" type="button">ADD TO CART</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="container content-section">
+        <h2 class="section-header">MERCH</h2>
+        <div class="shop-items">
+            <div class="shop-item">
+                <span class="shop-item-title">Poster</span>
+                <img class="shop-item-image" src="images/poster.jpg">
+                <div class="shop-item-details">
+                    <span class="shop-item-price">$19.99</span>
+                    <button class="btn btn-primary shop-item-button" type="button">ADD TO CART</button>
+                </div>
+            </div>
+            <div class="shop-item">
+                <span class="shop-item-title">Coffee Cup</span>
+                <img class="shop-item-image" src="images/coffee.png">
+                <div class="shop-item-details">
+                    <span class="shop-item-price">$6.99</span>
+                    <button class="btn btn-primary shop-item-button" type="button">ADD TO CART</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="container content-section">
+        <h2 class="section-header">CART</h2>
+        <div class="cart-row">
+            <span class="cart-item cart-header cart-column">ITEM</span>
+            <span class="cart-price cart-header cart-column">PRICE</span>
+            <span class="cart-quantity cart-header cart-column">QUANTITY</span>
+        </div>
+        <div class="cart-items">
+        </div>
+        <div class="cart-total">
+            <strong class="cart-total-title">Total</strong>
+            <span class="cart-total-price">$0</span>
+        </div>
+        <button class="btn btn-primary btn-purchase" type="button">PURCHASE</button>
+    </section>
+    
+    
+    <footer class="main-footer">
+        <div class="container main-footer-container">
+            <h3 class="band-name">The VEXX</h3>
+            <!-- Contact -->
+            <div id="contact" class="w3-container w3-center w3-padding-32">
+                <h2 class="w3-wide">CONTACT</h2>
+                Chicago, US<br>
+                Phone: +00 151515<br>
+                Email: mail@mail.com<br>
+                <p class="w3-opacity w3-center"><i>VEXX Tribe? Drop us a note!</i></p>
+
+                <form action="/action_page.php" target="_blank">
+                    <input class="w3-input" type="text" placeholder="Name" required name="Name">
+                    <input class="w3-input" type="text" placeholder="Email" required name="Email">
+                    <input class="w3-input" type="text" placeholder="Message" required name="Message"><br>
+                    <button class="w3-button w3-black" type="submit">SEND</button>
+                </form>
+
+                <br>
+                <<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5954.285237888163!2d-87.72096457288379!3d41.73901656693364!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x880e3aa06486f1c5%3A0x810ab36c4fc87a5f!2sParkview%2C%20Chicago%2C%20IL%2060652!5e0!3m2!1sen!2sus!4v1677605548435!5m2!1sen!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>>
+                <p class="w3-center w3-padding">Powered by <a href="" title="" target="_blank">Standing O Media Group</a></p>
+            </div>
+
+            <!-- End Content -->
+        </div>
+    </footer>
+</body>
+</html>
