@@ -1,0 +1,39 @@
+﻿/* This a professional font that makes the form look more trust worthy */
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+/* A basic gradient background started with blue and gold then changed my mind*/
+body {
+    background: linear-gradient(to bottom, #abdbe3, #eeeee4);
+}
+
+/* Put a small shadow for a bit of pop */
+input[type="button"],
+input[type="submit"] {
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Making sure I comment on all things even the responsive layout */
+@media only screen and (max-width: 768px) {
+    /* Student Information section */
+    .student-info {
+        flex-direction: column;
+    }
+
+        .student-info label,
+        .student-info input {
+            width: 100%;
+        }
+
+    /* Parent/Guardian section */
+    .parent-info {
+        flex-direction: column;
+    }
+
+        .parent-info label,
+        .parent-info input {
+            width: 100%;
+        }
+}body {
+}
