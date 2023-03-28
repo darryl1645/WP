@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="en">
+<!-- this is week 7 in-class example of JS object implementation, forms, bootstrap, etc. -->
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Updated CSS and improved buttons with new style add-->
+    <link rel="stylesheet" href="Aform.css" />
+        
+    <title>Financial Literacy Course Recommendation</title>
+    <style>
+        
+
+        form {
+            margin: 0 auto;
+            max-width: 500px;
+        }
+
+        label, input {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        button {
+            margin: 10px auto;
+            display: block;
+        }
+
+        
+        p {
+            margin: 0;
+        }
+
+        .course {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 20px;
+            margin: 20px;
+            max-width: 300px;
+            display: inline-block;
+            text-align: left;
+        }
+
+            .course img {
+                max-width: 100%;
+                margin-bottom: 10px;
+            }
+
+        .enroll-button {
+            display: block;
+            background-color: #00aaff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            margin-top: 10px;
+            cursor: pointer;
+
+           }
+        .btn {
+            display: block;
+            background-color: #00aaff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+    </style>
+    <script>
+        // Customer Object definition
+        function Patient(fm) {
+            // constructor
+            this.name = fm.name.value;
+            this.email = fm.email.value;
+            this.age = Number(fm.age.value);
+            this.symptom1 = fm.symptom1.checked; // No Emergency Fund,Low Savings
+            this.symptom2 = fm.symptom2.checked; // 30+ days credit utlization
+            this.symptom3 = fm.symptom3.checked; // No Investments
+            this.risk1 = fm.risk1.checked; // High debt
+            this.risk2 = fm.risk2.checked; //Low Pay
+
+            // return potential severity color of this case
+            this.severity = function () {
+                // if all three symptoms and any one of risk factors are present
+                if (this.symptom1 && this.symptom2 && this.symptom3 && (this.risk1 || this.risk2)) {
+                    return "#e99883"; // high red
+                // if all three symptoms are present but NOT the risk factors
+                } else if (this.symptom1 && this.symptom2 && this.symptom3 && !(this.risk1 || this.risk2)) {
+                    return "#f1f0a3"; // medium yellow
+                // if any of the symptoms are present
+                } else if (this.symptom1 || this.symptom2 || this.symptom3) {
+                    return "#caeeca"; // low green
+                } else { // gray
+                    return "#dddddd";
+                }
+            }
+            // return recommendation text
+            this.diagnose = function () {
+                // if NONE of symptoms are present but they have been potentially exposed
+                if (!(this.symptom1 || this.symptom2 || this.symptom3) && this.risk2) {
+                    return "Based on your selections we think that our basic finanical course will be the right fit for you.";
+                }
+                // if all three factors and any one of the risk factors are present
+                if (this.symptom1 && this.symptom2 && this.symptom3 && (this.risk1 || this.risk2)) {
+                    if (this.age == 55) { // elderly need adjust for retirment
+                        return "Based on your selection, we want to make sure that you can retire well, rest assured our suggestion is that you take both the basic and intermeidate courses";
+                    } else {
+                        return "Let's get you enrolled today! Contact us to get you finically free 813-555-1234";
+                    }
+                // if all three factors  are present but NOT risk factors
+                } else if (this.symptom1 && this.symptom2 && this.symptom3 && !(this.risk1 || this.risk2)) {
+                    return "Based on your selection, we want to make sure that you increase your savings and start your investments we recommend our Intermediate course.";              
+                // if any of the factors  are present and they have any risk factors
+                } else if ((this.symptom1 || this.symptom2 || this.symptom3) && (this.risk1 || this.risk2) ) {
+                    return "Let's get you enrolled today! Living paycheck to paycheck is not the way of life you are meant to have. Contact us to get you finically free 813-555-1234";
+                // if they have ANY factors  at all (but not risk factors)
+                } else if (this.symptom1 || this.symptom2 || this.symptom3) {
+                    return "Great Job, we can all still improve we suggest our Advance Course to improve on your returns.";       
+                } else { // low wealth
+                    return "Wealth is about increasing returns and decreasing debt our recommedation is to use all of our courses";
+                }
+            }
+
+        }
+
+        function process_form() {
+            // get form object
+            var fm = document.getElementById("my_form");
+            // get output object
+            var out = document.getElementById("output");
+            // instantiate patient object
+            var patient = new Patient(fm);
+            //console.log("Debug:" + JSON.stringify(patient));
+
+            // set background color using patient object severity method
+            out.style.background = patient.severity();
+            // display recommendations based on input values using diagnose method
+            out.innerHTML = patient.diagnose();
+        }
+    </script>
+</head>
+
+<body>
+    <div id="container"></div>
+        <h1>Financial Literacy Course Recommendation</h1>
+        <form id="my_form">
+            <!-- individual info -->
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" class="form-control" id="name">
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" id="email" aria-describedby="emailHelp">
+                <small id="emailHelp" class="form-text text-muted">
+                    We'll never share your email with anyone
+                    else.
+                </small>
+            </div>
+            <div class="form-group">
+                <label for="age">Age</label>
+                <select class="form-control" id="age">
+                    <option value="0">Please select your age category</option>
+                    <option value="1">1-12 years old</option>
+                    <option value="13">13-25 years old</option>
+                    <option value="26">26-40 years old</option>
+                    <option value="41">41-64 years old</option>
+                    <option value="65">65 and older</option>
+                </select>
+            </div>
+            <!-- Financial Snapshot -->
+            <!--// No Emergency Fund,Low Savings
+                // 30+ days credit utlization
+                // No Investments
+                // High debt
+                //Low Pay-->
+            <h4>Please check all that apply:</h4>
+            <br>
+            <div class="form-group form-check">
+                <input type="checkbox" class="form-check-input" id="symptom1">
+                <label class="form-check-label" for="symptom1"> no emergency Fund/Low Savings.</label>
+            </div>
+            <div class="form-group form-check">
+                <input type="checkbox" class="form-check-input" id="symptom2">
+                <label class="form-check-label" for="symptom2">30+ days credit utlization.</label>
+            </div>
+            <div class="form-group form-check">
+                <input type="checkbox" class="form-check-input" id="symptom3">
+                <label class="form-check-label" for="symptom3">No Investments.</label>
+            </div>
+            <!-- risk assessment -->
+            <div class="form-group form-check">
+                <input type="checkbox" class="form-check-input" id="risk1">
+                <label class="form-check-label" for="risk1">High debt.</label>
+            </div>
+            <div class="form-group form-check">
+                <input type="checkbox" class="form-check-input" id="risk2">
+                <label class="form-check-label" for="risk2">Low Salary or Pay.</label>
+            </div>
+
+            <button type="button" class="btn btn-primary" onclick="process_form()">Submit</button>
+            <!-- recommendation output area -->
+            <div id="output">
+
+            </div>
+
+        </form>
+        
+    <div class="course" id="basic">
+        <img src="img/m3.jpg">
+        <h2> Financial Literacy</h2>
+        <p>Level: Basic</p>
+        <p>Phone: 555-1234</p>
+        <button class="enroll-button">Enroll Today</button>
+    </div>
+
+    <div class="course" id="intermediate">
+        <img src="img/m2.jpg">
+        <h2> Financial Literacy</h2>
+        <p>Level: Intermediate</p>
+        <p>Phone: 555-5678</p>
+        <button class="enroll-button">Enroll Today</button>
+    </div>
+
+    <div class="course" id="advanced">
+        <img src="img/m1.jpg">
+        <h2> Financial Literacy</h2>
+        <p>Level: Advanced</p>
+        <p>Phone: 555-5678</p>
+        <button class="enroll-button">Enroll Today</button>
+
+
+
+    </div>
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
