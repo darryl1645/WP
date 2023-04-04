@@ -1,0 +1,79 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Kiosk CRM</title>
+    <link rel="stylesheet" href="mstyle.css">
+    <script>
+
+// Set up a global array of customers for kiosk
+var customer_names = ["Amy", "Bob", "Charlos", "Darryl", "Eve"];
+
+var customer;
+
+// The array methods to add and remove customers
+function arrayMethods() {
+            customer_names[customer_names.length] = prompt("Add another customer to the end of the array");
+            alert("The customers are " + customer_names);
+
+            customer_names.push(prompt("Push another customer to the end of the array"));
+            alert("After push the customers are " + customer_names);
+
+            customer = customer_names.pop();
+            alert("We popped off " + customer + ". After pop the customers are " + customer_names);
+
+            customer_names.unshift(prompt("Unshift another customer to the beginning of the array"));
+            alert("After unshift the customers are " + customer_names);
+
+            customer = customer_names.shift();
+            alert("We shifted off " + customer + ". After shift the customers are " + customer_names);
+}
+
+// This function checks if a customer is in the list
+function isCustomerInArray() {
+            var customerToCheck = prompt("Enter a customer name and we will see if they are in the list of customers");
+            var foundIt = false;
+            for (i = 0; i < customer_names.length; i++) {
+                if (customerToCheck == customer_names[i]) {
+                    foundIt = true;
+                    alert("You are confirmed on the list, " + customerToCheck);
+                }
+            }
+
+            if (!foundIt) {
+                alert("Sorry, you are not currently on our list, " + customerToCheck + ". But we are adding them to the waiting list.");
+                customer_names.push(customerToCheck);
+                alert(customerToCheck + " has been added to the waiting list.");
+            }
+}
+
+// This function removes a customer from the list
+function removeCustomer() {
+            var customerToRemove = prompt("Enter a customer name and we will remove them from the list of customers");
+            var foundIt = false;
+            for (i = 0; i < customer_names.length; i++) {
+                if (customerToRemove == customer_names[i]) {
+                    foundIt = true;
+                    customer_names.splice(i, 1);
+                    alert("You have been removed from the waiting list, " + customerToRemove);
+                    break;
+                }
+            }
+
+            if (!foundIt) {
+                alert("Sorry, we couldn't find " + customerToRemove + " on our list.");
+            }
+}
+
+    </script>
+</head>
+<body>
+    <h2>Kiosk Customer Waiting List</h2>
+    <br>
+    <button onclick="isCustomerInArray()">Add a new customer to the waiting list</button>
+    <br><br>
+    <button onclick="arrayMethods()">Test Array Functions</button>
+    <br><br>
+    <button onclick="removeCustomer()">Remove a customer from the list</button>
+</body>
+</html>

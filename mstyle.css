@@ -1,0 +1,105 @@
+﻿/* Global styles */
+body {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #333;
+    background-color: #f7f7f7;
+}
+
+/* Header styles */
+.header {
+    background-color: #0084ff;
+    color: #fff;
+    padding: 10px;
+}
+
+    .header h1 {
+        font-size: 36px;
+        margin: 0;
+    }
+
+    .header p {
+        font-size: 18px;
+        margin: 0;
+    }
+
+/* Navigation styles */
+nav {
+    background-color: #fff;
+    border-bottom: 1px solid #ddd;
+}
+
+    nav ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+    }
+
+    nav li {
+        margin: 0 10px;
+    }
+
+    nav a {
+        display: block;
+        padding: 10px;
+        color: #333;
+        text-decoration: none;
+    }
+
+        nav a:hover {
+            background-color: #0084ff;
+            color: #fff;
+        }
+
+/* Main content styles */
+.main-content {
+    margin: 20px auto;
+    max-width: 800px;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+    .main-content h2 {
+        font-size: 28px;
+        margin-top: 0;
+    }
+
+    .main-content p {
+        font-size: 18px;
+        line-height: 1.5;
+    }
+
+/* Footer styles */
+footer {
+    background-color: #0084ff;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+}
+
+    footer p {
+        margin: 0;
+        font-size: 16px;
+    }
+
+/* Button styles */
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #0084ff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.2s ease-in-out;
+    box-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+}
+
+    .button:hover {
+        background-color: #005ca3;
+        box-shadow: 4px 4px 8px rgba(0,0,0,0.2);
+        cursor: pointer;
+    }
