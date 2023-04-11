@@ -1,0 +1,398 @@
+﻿<html>
+<head>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>StuDeo Learning at Genius Levels</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+
+        <!-- Header -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#">StuDeo</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="Week11a.html">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Courses</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="week11b.html">Student Profile</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <style>
+            /* Center the content */
+            .container {
+                max-width: 800px;
+                margin: 0 auto;
+            }
+
+            /* Style the heading */
+            h2 {
+                font-size: 32px;
+                text-align: center;
+                margin-bottom: 20px;
+            }
+
+            /* Style the images */
+            img {
+                display: block;
+                margin: 0 auto;
+                max-width: 100%;
+            }
+
+            /* Style the boxes */
+            .box {
+                background-color: #fff;
+                border-radius: 4px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                margin: 20px;
+                padding: 20px;
+            }
+
+            /* Style the buttons */
+            button {
+                background-color: #f0f8ff;
+                border: none;
+                border-radius: 4px;
+                color: #333;
+                cursor: pointer;
+                display: inline-block;
+                font-size: 16px;
+                margin: 10px;
+                padding: 10px 20px;
+                transition: background-color 0.3s;
+            }
+
+                /* Style the buttons on hover */
+                button:hover {
+                    background-color: #b0c4de;
+                }
+
+            /* Style the columns */
+            .row::after {
+                content: "";
+                clear: both;
+                display: table;
+            }
+
+            .col {
+                float: left;
+                width: 100%;
+                padding: 10px;
+            }
+
+            /* Style the light box */
+            .lightbox {
+                background-color: rgba(0, 0, 0, 0.5);
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                display: none;
+                justify-content: center;
+                align-items: center;
+                z-index: 999;
+            }
+
+                .lightbox.show {
+                    display: flex;
+                }
+
+            .lightbox-content {
+                background-color: #fff;
+                border-radius: 4px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                margin: 20px;
+                padding: 20px;
+                max-width: 400px;
+                max-height: 400px;
+                overflow: auto;
+            }
+
+            .lightbox-close {
+                position: absolute;
+                top: 10px;
+                right: 10px;
+                font-size: 20px;
+                cursor: pointer;
+            }
+        </style>
+
+
+        <script type="text/javascript">
+
+// Globals
+
+// variables to hold list of courses for each person
+var array1 = new Array();
+var array2 = new Array();
+var array3 = new Array();
+var array4 = new Array();
+
+// array of names
+var names = new Array();
+
+
+// fill in names: first prompt for how many people from 1 to 4, then set up a for loop to enter that many names.
+function fill_names(my_array) {
+
+                var x = -2;
+
+
+                do {
+                    x = parseInt(prompt("How many people are planning to take web development courses?", "Type a number here, from 1 to 4."));
+                }
+                while ((x < 1) || (x > 4)); // handle strings
+
+                for (var i = 0; i < x; ++i) {
+                    my_array[i] = prompt("What is the name of the next person?", "Type a name here.");
+
+                    switch (i) {
+
+                        case 0:
+                            writeText(my_array[i], "person1");
+                            break;
+
+                        case 1:
+                            writeText(my_array[i], "person2");
+                            break;
+
+                        case 2:
+                            writeText(my_array[i], "person3");
+                            break;
+
+                        case 3:
+                            writeText(my_array[i], "person4");
+                            break;
+
+                    }
+
+
+                }
+
+}
+//input the list of courses for a person, first prompt for how many courses, then set up a for loop to enter that many names.
+function fill_array(my_array) {
+                var x = -2;
+
+                do {
+                    x = parseInt(prompt("How many courses is this person planning to take?", "Type a number here, greater than 0."));
+                }
+                while (x < 1);
+
+                for (var i = 0; i < x; ++i) {
+                    my_array[i] = prompt("What is the next course this person is planning to take?", "Type the next course name here.");
+                }
+}
+
+//Make this function prompt the user for what element they'd like to add, then prompt for a value for that element.
+//Then, it should assign the value the user entered into the array.
+function add_an_element(my_array) {
+
+                var x = -1;
+                do {
+                    //Prompt the user for a value.
+                    x = parseInt(prompt("Which person's course list would you like to update?", "Type a number here, from 0 to to 1 less than the array length."));
+                }
+                while ((x < 0) || (x >= my_array.length));
+
+
+                //Prompt the user for what the user would like to store.
+                var y = prompt("What course would you like to add or substitute in the list you selected?", "Type a course name here.");
+                my_array[x] = y;
+
+}
+
+//This part of the code should output the array.
+function output_the_array(my_array) {
+                //Output the values with a for loop.
+                var z = new String();
+                z = my_array.toString();
+                writeText(z, "the_text");
+}
+
+//This part of the code should output the array.
+function output_all_arrays() {
+
+                var z = new String();
+                z = "";
+
+                if (names.length > 0) {
+                    z += names[0] + " plans to take: ";
+                    z += array1.toString
+                    var z = new String();
+                    z = "";
+
+                    if (names.length > 0) {
+                        z += names[0] + " brings: ";
+                        z += array1.toString();
+                        if (names.length > 1) {
+                            z += " " + names[1] + " brings: ";
+                            z += array2.toString();
+                            if (names.length > 2) {
+                                z += " " + names[2] + " brings: ";
+                                z += array3.toString();
+                                if (names.length > 3) {
+                                    z += names[3] + " brings: ";
+                                    z += array4.toString();
+                                }
+                            }
+                        }
+                    }
+
+                    writeText(z, "the_text");
+                }
+                // This writes out something
+                function writeText(txt, id) {
+                    document.getElementById(id).innerHTML = txt;
+                }
+
+        </script>
+</head>
+
+   
+       
+        <script>
+            var courses = ["HTML/CSS", "JavaScript", "Python", "PHP", "Ruby", "SQL"];
+            var names = ["Person 1", "Person 2", "Person 3", "Person 4"];
+            var selected_courses = {};
+
+            function fill_courses(name) {
+                var input = prompt("Enter comma-separated list of courses " + name + " wants to take (e.g. HTML/CSS, Python):");
+                if (input) {
+                    var course_list = input.split(",");
+                    for (var i = 0; i < course_list.length; i++) {
+                        course_list[i] = course_list[i].trim();
+                        if (courses.includes(course_list[i])) {
+                            selected_courses[name][course_list[i]] = true;
+                        }
+                    }
+                }
+            }
+
+            function output_courses(name) {
+                var course_str = name + " wants to take:";
+                for (var i = 0; i < courses.length; i++) {
+                    if (selected_courses[name][courses[i]]) {
+                        course_str += "<br>" + courses[i];
+                    }
+                }
+                document.getElementById("courses_" + name).innerHTML = course_str;
+            }
+
+            function add_course(name) {
+                var course = prompt("Enter a course " + name + " wants to add:");
+                if (course && courses.includes(course)) {
+                    selected_courses[name][course] = true;
+                    output_courses(name);
+                }
+            }
+
+            function remove_course(name) {
+                var course = prompt("Enter a course " + name + " wants to remove:");
+                if (course && courses.includes(course)) {
+                    selected_courses[name][course] = false;
+                    output_courses(name);
+                }
+            }
+
+            function output_all_courses() {
+                var course_str = "";
+                for (var i = 0; i < names.length; i++) {
+                    course_str += "<br>" + names[i] + " wants to take:";
+                    for (var j = 0; j < courses.length; j++) {
+                        if (selected_courses[names[i]][courses[j]]) {
+                            course_str += "<br>" + courses[j];
+                        }
+                    }
+                }
+                document.getElementById("all_courses").innerHTML = course_str;
+            }
+
+            function init() {
+                for (var i = 0; i < names.length; i++) {
+                    selected_courses[names[i]] = {};
+                    for (var j = 0; j < courses.length; j++) {
+                        selected_courses[names[i]][courses[j]] = false;
+                    }
+                }
+            }
+        </script>
+    </head>
+        <body onload="init();">
+
+            <!--  -->
+           
+            <div class="container">
+                <h2>Web Development Course Selector - helps up to four people choose which courses to take</h2>
+                <p id="the_text">Choose which web development courses you and your friends want to take.</p>
+                <h3>
+                    <div class="person-buttons">
+                        <button type="button" onclick="fill_courses('Person 1');">Enter the courses Person 1 wants to take.</button>
+                        <button type="button" onclick="output_courses('Person 1');" id="btn_courses_person1">Output the courses Person 1 wants to take.</button>
+                        <button type="button" onclick="add_course('Person 1');">Add a course Person 1 wants to take.</button>
+                        <button type="button" onclick="remove_course('Person 1');">Remove a course Person 1 wants to take.</button>
+                    </div>
+                    <br><br>
+                    <div class="person-buttons">
+                        <button type="button" onclick="fill_courses('Person 2');">Enter the courses Person 2 wants to take.</button>
+                        <button type="button" onclick="output_courses('Person 2');" id="btn_courses_person1">Output the courses Person 2 wants to take.</button>
+                        <button type="button" onclick="add_course('Person 2');">Add a course Person 2 wants to take.</button>
+                        <button type="button" onclick="remove_course('Person 2');">Remove a course Person 2 wants to take.</button>
+                    </div>
+                    <br><br>
+                    <div class="person-buttons">
+                        <button type="button" onclick="fill_courses('Person 3');">Enter the courses Person 3 wants to take.</button>
+                        <button type="button" onclick="output_courses('Person 3');" id="btn_courses_person1">Output the courses Person 3 wants to take.</button>
+
+                        <button type="button" onclick="add_course('Person 3');">Add a course Person 3 wants to take.</button>
+
+                        <button type="button" onclick="remove_course('Person 3');">Remove a course Person 3 wants to take.</button>
+                    </div>
+                    <br><br>
+                    <div class="person-buttons">
+                        <button type="button" onclick="fill_courses('Person 4');">Enter the courses Person 4 wants to take.</button>
+
+                        <button type="button" onclick="output_courses('Person 4');" id="btn_courses_person1">Output the courses Person 4 wants to take.</button>
+
+                        <button type="button" onclick="add_course('Person 4');">Add a course Person 4 wants to take.</button>
+
+                        <button type="button" onclick="remove_course('Person 4');">Remove a course Person 4 wants to take.</button>
+                    </div>
+
+
+
+
+
+
+                    <h3>Courses selected:</h3>
+                    <div id="courses_Person 1"></div>
+                    <div id="courses_Person 2"></div>
+                    <div id="courses_Person 3"></div>
+                    <div id="courses_Person 4"></div>
+                    <button type="button" onclick="output_all_courses();">Output all selected courses.</button>
+                    <br>
+                    <br>
+                    <div id="all_courses"></div>
+
+</body>
+</html>
