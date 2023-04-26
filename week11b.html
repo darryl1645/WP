@@ -9,6 +9,22 @@
     <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans'>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <script>
+    //this will add date and can be used with input for birthday.
+        var curday = function (sp) {
+            today = new Date();
+            var dd = today.getDate();
+            var mm = today.getMonth() + 1; //As January is 0.
+            var yyyy = today.getFullYear();
+
+            if (dd < 10) dd = '0' + dd;
+            if (mm < 10) mm = '0' + mm;
+            return (mm + sp + dd + sp + yyyy);
+        };
+        console.log(curday('/'));
+        console.log(curday('-'));
+    </script>
     <style>
         html, body, h1, h2, h3, h4, h5 {
             font-family: "Open Sans", sans-serif
@@ -45,6 +61,10 @@
         <a href="Week11a.html" class="w3-bar-item w3-button w3-padding-large">Link 2</a>
         <a href="Week11a.html" class="w3-bar-item w3-button w3-padding-large">Link 3</a>
         <a href="Week11a.html" class="w3-bar-item w3-button w3-padding-large">Students Profile</a>
+        <h1>login</h1>
+        <a href="https://accounts.google.com/v3/signin/identifier?dsh=S2064461342%3A1682533432028708&continue=https%3A%2F%2Faccounts.google.com%2F&followup=https%3A%2F%2Faccounts.google.com%2F&ifkv=AQMjQ7RMv5Wonpi_TxW9Orp3zRrmgieG4aKHJMlB3b_mNhygeuLrYNE3z7COlfzBhURwujhENZ_d&passive=1209600&flowName=GlifWebSignIn&flowEntry=ServiceLogin" class="btn btn-primary btn-lg">Ready for test</a>
+        <div class="g-signin2" data-onsuccess="onSignIn"></div>
+
     </div>
 
     <!-- Page Container -->
