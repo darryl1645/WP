@@ -1,0 +1,117 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>PC Learning Quiz</title>
+    <link rel="stylesheet" href="style11.css">
+</head>
+
+<body>
+    <h1>PC Learning Quiz</h1>
+    <p>Drag and drop the components to their correct positions:</p>
+
+    <div class="quiz-container">
+        <div class="dropzone" id="dropzone-motherboard">
+            <p>Drop Motherboard/CPU Here</p>
+        </div>
+        <div class="dropzone" id="dropzone-graphics-card">
+            <p>Drop Graphics Card Here</p>
+        </div>
+        <div class="dropzone" id="dropzone-hard-drive">
+            <p>Drop Hard Drive Here</p>
+        </div>
+        <div class="dropzone" id="dropzone-dvd">
+            <p>Drop DVD/CD Reader Here</p>
+        </div>
+        <div class="dropzone" id="dropzone-ram">
+            <p>Drop RAM Here</p>
+        </div>
+        <div class="dropzone" id="dropzone-power-supply">
+            <p>Drop Power Supply Here</p>
+        </div>
+        <div class="image-container">
+            <img src="pc.png" alt="PC Internal Components" id="image">
+        </div>
+        <div class="draggable" id="draggable-motherboard">
+            <img src="motherboard.png" alt="Motherboard/CPU">
+        </div>
+        <div class="draggable" id="draggable-graphics-card">
+            <img src="gc1.jpg" alt="Graphics Card">
+        </div>
+        <div class="draggable" id="draggable-hard-drive">
+            <img src="hd1.jpg" alt="Hard Drive">
+        </div>
+        <div class="draggable" id="draggable-dvd">
+            <img src="reader1.jpg" alt="DVD/CD Reader">
+        </div>
+        <div class="draggable" id="draggable-ram">
+            <img src="ramr.jpg" alt="RAM">
+        </div>
+        <div class="draggable" id="draggable-power-supply">
+            <img src="ps1.jpg" alt="Power Supply">
+        </div>
+    </div>
+    
+ <script>
+const dropzones = document.querySelectorAll(".dropzone");
+
+dropzones.forEach(dropzone => {
+            dropzone.addEventListener("dragover", e => {
+                e.preventDefault();
+            });
+
+            dropzone.addEventListener("drop", onDrop);
+});
+
+function onDrop(event) {
+            event.preventDefault();
+            var draggableElement = event.dataTransfer.getData("text");
+            var dropzone = event.target;
+            dropzone.appendChild(document.getElementById(draggableElement));
+            checkAnswer();
+}
+
+function checkAnswer() {
+            const motherboardZone = document.querySelector("#dropzone-motherboard");
+            const graphicsCardZone = document.querySelector("#dropzone-graphics-card");
+            const hardDriveZone = document.querySelector("#dropzone-hard-drive");
+            const dvdZone = document.querySelector("#dropzone-dvd");
+            const ramZone = document.querySelector("#dropzone-ram");
+            const powerSupplyZone = document.querySelector("#dropzone-power-supply");
+
+            if (motherboardZone.children.length === 1 &&
+                graphicsCardZone.children.length === 1 &&
+                hardDriveZone.children.length === 1 &&
+                dvdZone.children.length === 1 &&
+                ramZone.children.length === 1 &&
+                powerSupplyZone.children.length === 1) {
+                if (motherboardZone.children[0].id === "draggable-motherboard" &&
+                    graphicsCardZone.children[0].id === "draggable-graphics-card" &&
+                    hardDriveZone.children[0].id === "draggable-hard-drive" &&
+                    dvdZone.children[0].id === "draggable-dvd" &&
+                    ramZone.children[0].id === "draggable-ram" &&
+                    powerSupplyZone.children[0].id === "draggable-power-supply") {
+                    alert("Congratulations! You have correctly placed all the components.");
+                } else {
+                    alert("Sorry, some components are not placed correctly. Please try again.");
+                }
+            }
+}
+
+const draggables = document.querySelectorAll(".draggable");
+
+draggables.forEach(draggable => {
+            draggable.addEventListener("dragstart", () => {
+                draggable.classList.add("dragging");
+            });
+
+            draggable.addEventListener("dragend", () => {
+                draggable.classList.remove("dragging");
+            });
+});
+    </script>
+
+    
+    <script src="script.js"></script>
+
+</body>
+</html>
