@@ -1,117 +1,119 @@
-﻿<!DOCTYPE html>
+﻿﻿
+<!DOCTYPE html>
 <html>
 <head>
-    <title>PC Learning Quiz</title>
-    <link rel="stylesheet" href="style11.css">
+    <title>PC Building</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Build Your Own PC: The Ultimate Guide</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="style.css">
+
+
 </head>
-
 <body>
-    <h1>PC Learning Quiz</h1>
-    <p>Drag and drop the components to their correct positions:</p>
+    <!-- Naviigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#"></a> <img src="11studeo_logo.png" alt="logo">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="Week11a.html">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">About</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Courses
+                    </a>
+                    <div class="dropdown-menu text-center" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="week11pc.html">PC Building</a>
+                        <a class="dropdown-item" href="#">Game Development</a>
+                        <a class="dropdown-item" href="#">Web Development</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Contact</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="week11b.html">Student Profile</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
 
-    <div class="quiz-container">
-        <div class="dropzone" id="dropzone-motherboard">
-            <p>Drop Motherboard/CPU Here</p>
-        </div>
-        <div class="dropzone" id="dropzone-graphics-card">
-            <p>Drop Graphics Card Here</p>
-        </div>
-        <div class="dropzone" id="dropzone-hard-drive">
-            <p>Drop Hard Drive Here</p>
-        </div>
-        <div class="dropzone" id="dropzone-dvd">
-            <p>Drop DVD/CD Reader Here</p>
-        </div>
-        <div class="dropzone" id="dropzone-ram">
-            <p>Drop RAM Here</p>
-        </div>
-        <div class="dropzone" id="dropzone-power-supply">
-            <p>Drop Power Supply Here</p>
-        </div>
-        <div class="image-container">
-            <img src="pc.png" alt="PC Internal Components" id="image">
-        </div>
-        <div class="draggable" id="draggable-motherboard">
-            <img src="motherboard.png" alt="Motherboard/CPU">
-        </div>
-        <div class="draggable" id="draggable-graphics-card">
-            <img src="gc1.jpg" alt="Graphics Card">
-        </div>
-        <div class="draggable" id="draggable-hard-drive">
-            <img src="hd1.jpg" alt="Hard Drive">
-        </div>
-        <div class="draggable" id="draggable-dvd">
-            <img src="reader1.jpg" alt="DVD/CD Reader">
-        </div>
-        <div class="draggable" id="draggable-ram">
-            <img src="ramr.jpg" alt="RAM">
-        </div>
-        <div class="draggable" id="draggable-power-supply">
-            <img src="ps1.jpg" alt="Power Supply">
-        </div>
-    </div>
-    
- <script>
-const dropzones = document.querySelectorAll(".dropzone");
-
-dropzones.forEach(dropzone => {
-            dropzone.addEventListener("dragover", e => {
-                e.preventDefault();
-            });
-
-            dropzone.addEventListener("drop", onDrop);
-});
-
-function onDrop(event) {
-            event.preventDefault();
-            var draggableElement = event.dataTransfer.getData("text");
-            var dropzone = event.target;
-            dropzone.appendChild(document.getElementById(draggableElement));
-            checkAnswer();
-}
-
-function checkAnswer() {
-            const motherboardZone = document.querySelector("#dropzone-motherboard");
-            const graphicsCardZone = document.querySelector("#dropzone-graphics-card");
-            const hardDriveZone = document.querySelector("#dropzone-hard-drive");
-            const dvdZone = document.querySelector("#dropzone-dvd");
-            const ramZone = document.querySelector("#dropzone-ram");
-            const powerSupplyZone = document.querySelector("#dropzone-power-supply");
-
-            if (motherboardZone.children.length === 1 &&
-                graphicsCardZone.children.length === 1 &&
-                hardDriveZone.children.length === 1 &&
-                dvdZone.children.length === 1 &&
-                ramZone.children.length === 1 &&
-                powerSupplyZone.children.length === 1) {
-                if (motherboardZone.children[0].id === "draggable-motherboard" &&
-                    graphicsCardZone.children[0].id === "draggable-graphics-card" &&
-                    hardDriveZone.children[0].id === "draggable-hard-drive" &&
-                    dvdZone.children[0].id === "draggable-dvd" &&
-                    ramZone.children[0].id === "draggable-ram" &&
-                    powerSupplyZone.children[0].id === "draggable-power-supply") {
-                    alert("Congratulations! You have correctly placed all the components.");
-                } else {
-                    alert("Sorry, some components are not placed correctly. Please try again.");
-                }
-            }
-}
-
-const draggables = document.querySelectorAll(".draggable");
-
-draggables.forEach(draggable => {
-            draggable.addEventListener("dragstart", () => {
-                draggable.classList.add("dragging");
-            });
-
-            draggable.addEventListener("dragend", () => {
-                draggable.classList.remove("dragging");
-            });
-});
-    </script>
 
     
-    <script src="script.js"></script>
+
+        <!-- Video player -->
+        <div class="container">
+            <div class="text-container">
+                <h1>Basic External Parts of a PC</h1>
+                <h3>Learning Objective 01:</h3>
+                <p> Be able to identify basic external elements of a PC.</p>
+            </div>
+
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/mLgTnkw558w" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+            <br />
+            <h1>Basic Internal Parts of a PC</h1>
+            <h3>Learning Objective 02:</h3>
+            <p> Be able to identify basic Internal elements of a PC.</p>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/HB4I2CgkcCo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </div>
+
+       
+        <br />
+        <!-- Image map -->
+          
+            <h2>Knowledge Check.</h2>
+            <p> Take your time and review the basic componets of the PC. </p>
+            <img src="pc.png" alt="Computer Parts" usemap="#image-maps-2023-04-25-180020">
+            <map name="image-maps-2023-04-25-180020" id="ImageMapsCom-image-maps-2023-04-25-180020">
+                <area alt="PS" title="Power Supply" href="ps1.jpg" shape="rect" coords="46,45,225,143" style="outline:none;" target="_self" />
+                <area alt="MotherBoard" title="Mother Board" href="motherboard.png" shape="rect" coords="89,167,239,543" style="outline:none;" target="_self" />
+                <area alt="Memory" title="Memory (Ram)" href="ramr.jpg" shape="rect" coords="268,140,332,324" style="outline:none;" target="_self" />
+                <area alt="Fan" title="Fan" href="fan1.jpg" shape="rect" coords="28,149,92,385" style="outline:none;" target="_self" />
+                <area alt="Graphics Card" title="Graphics Card" href="gc1.jpg" shape="rect" coords="259,326,370,446" style="outline:none;" target="_self" />
+                <area alt="Hard drive" title="Hard drive" href="hd1.jpg" shape="rect" coords="387,339,583,459" style="outline:none;" target="_self" />
+                <area alt="DVD/CD Reader" title="DVD/CD Reader" href="reader1.jpg" shape="rect" coords="466,42,653,246" style="outline:none;" target="_self" />
+            </map>
+            <br />
+
+            <h1>You are ready for the Computer Parts Quiz</h1>
+            <a href="finalquiz.html" class="btn btn-primary btn-lg">Ready for test</a>
+
+
+            <!-- Work on this later!need to write, clickable and add error/correction
+            <h2>PC Parts Match Game.</h2>
+            <p> Drag and drop images to match with name </p>
+            <section class="score">
+                <span class="correct">0</span>/<span class="total">0</span>
+                <button id="play-again-btn">Play Again</button>
+            </section>
+            <section class="draggable-items">
+
+                <img class="draggable-image" id="ps-image" src="drag_ps.jpg" alt="Power Supply" />
+                <img class="draggable-image" id="motherboard-image" src="drag_mb.jpg" alt="Motherboard" />
+                <img class="draggable-image" id="ram-image" src="drag_ram.jpg" alt="Random Access Memory" />
+                <img class="draggable-image" id="fan-image" src="drag_fan.jpg" alt="Fan" />
+                <img class="draggable-image" id="gc-image" src="drag_video.jpg" alt="Graphics Card" />
+                <img class="draggable-image" id="hd-image" src="drag_hd.jpg" alt="Hard drive" />
+                <img class="draggable-image" id="reader-image" src="drag_cd.jpg" alt="DVD/CD Reader" /> -->
 
 </body>
 </html>
+<!-- Course Content -->
+<!-- Add more modules as necessary -->
+<!-- Footer -->
+<!-- Scripts -->
+<script src="quiz.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+

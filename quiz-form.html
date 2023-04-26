@@ -1,0 +1,98 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Computer Internal Parts Quiz</title>
+    <link rel="stylesheet" href="quiz11.css">
+    <style>
+        input[type="text"] {
+            width: 100px;
+        }
+
+        .correct {
+            background-color: #ccffcc;
+        }
+
+        .incorrect {
+            background-color: #ffcccc;
+        }
+    </style>
+</head>
+<body>
+    <h1>Computer Internal Parts Quiz</h1>
+    <form id="quiz-form">
+        <ol>
+            <li>
+                <label for="q0">What is the brain of the computer called? (Hint: starts with "p")</label>
+                <input type="text" id="q0" name="q0" />
+            </li>
+            <li>
+                <label for="q1">What is the temporary storage area of the computer called?</label>
+                <input type="text" id="q1" name="q1" />
+            </li>
+            <li>
+                <label for="q2">What is the permanent storage area of the computer called?</label>
+                <input type="text" id="q2" name="q2" />
+            </li>
+            <li>
+                <label for="q3">What is the main circuit board of the computer called?</label>
+                <input type="text" id="q3" name="q3" />
+            </li>
+            <li>
+                <label for="q4">What device controls the movement of the mouse pointer?</label>
+                <input type="text" id="q4" name="q4" />
+            </li>
+        </ol>
+        <button type="submit">Submit</button>
+    </form>
+    <script>
+var questions = [
+            {
+                q: "What is the brain of the computer called? (Hint: starts with 'p')",
+                a: "Processor",
+            },
+            {
+                q: "What is the temporary storage area of the computer called?",
+                a: "RAM",
+            },
+            {
+                q: "What is the permanent storage area of the computer called?",
+                a: "Hard Drive",
+            },
+            {
+                q: "What is the main circuit board of the computer called?",
+                a: "Motherboard",
+            },
+            {
+                q: "What device controls the movement of the mouse pointer?",
+                a: "Mouse",
+            },
+];
+
+var quizForm = document.getElementById("quiz-form");
+quizForm.addEventListener("submit", validateQuiz);
+
+function validateQuiz(event) {
+            event.preventDefault();
+            var quizForm = document.getElementById("quiz-form");
+            var inputs = quizForm.getElementsByTagName("input");
+            var score = 0;
+
+            for (var i = 0; i < inputs.length; i++) {
+                var questionIndex = parseInt(inputs[i].name.substr(1));
+                var answer = questions[questionIndex].a;
+                if (inputs[i].value.toLowerCase() === answer.toLowerCase()) {
+                    score++;
+                    inputs[i].classList.add("correct");
+                    inputs[i].classList.remove("incorrect");
+                } else {
+                    inputs[i].classList.add("incorrect");
+                    inputs[i].classList.remove("correct");
+                }
+            }
+
+            alert("Your score is " + score + " out of " + questions.length);
+}
+    </script>
+</body>
+</html>
+
